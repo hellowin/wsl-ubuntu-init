@@ -13,7 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Test
+      - name: Install
         run: |
           chmod +x init.sh
           sudo ./init.sh
+      
+      - name: Test Installed Apps
+        run: |
+          terraform -v
