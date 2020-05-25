@@ -7,7 +7,7 @@ on:
       - master
 jobs:
   test:
-    name: Test full.sh
+    name: Test Complete Installation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
