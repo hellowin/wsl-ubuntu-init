@@ -20,4 +20,6 @@ jobs:
       
       - name: Test Installed Apps
         run: |
+          gcc -v
+          make -v
           terraform -v

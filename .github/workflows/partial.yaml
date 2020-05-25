@@ -20,6 +20,7 @@ jobs:
       
       - name: Verify init.sh
         run: |
+          gcc -v
           make -v
       
       - name: Test Terraform
