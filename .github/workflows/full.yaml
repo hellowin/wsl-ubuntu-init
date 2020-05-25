@@ -1,12 +1,14 @@
 name: Complete Installation
 on: 
+  pull_request:
+    types: [opened, edited, closed, reopened, synchronize]
   push:
     branches:
       - master
 jobs:
   test:
     name: Test init.sh
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
