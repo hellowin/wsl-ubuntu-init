@@ -1,4 +1,4 @@
-name: Complete Installation
+name: Partial Installation
 on: 
   pull_request:
     types: [opened, edited, closed, reopened, synchronize]
