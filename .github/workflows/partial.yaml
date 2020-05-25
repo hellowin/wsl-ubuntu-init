@@ -30,3 +30,11 @@ jobs:
       - name: Verify Terraform
         run: |
           terraform -v
+      
+      - name: Test GoLang
+        run: |
+          make golang
+      
+      - name: Verify GoLang
+        run: |
+          go version

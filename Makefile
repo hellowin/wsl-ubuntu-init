@@ -1,11 +1,20 @@
-.PHONY: terraform
+TERRAFORM_VERSION=0.12.25
+GOLANG_VERSION=1.14.3
+
+.PHONY: terraform golang
 
 terraform:
-	sudo ls
-	wget https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
-	unzip terraform_0.12.25_linux_amd64.zip
+	wget https://releases.hashicorp.com/terraform/$(TERRAFORM_VERSION)/terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
+	unzip terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
 	chmod +x terraform
 	sudo mv terraform /usr/local/bin
-	rm terraform_0.12.25_linux_amd64.zip
+	rm terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
 
-full: terraform
+golang:
+	wget https://dl.google.com/go/go$(GOLANG_VERSION).linux-amd64.tar.gz
+	sudo tar -C /usr/local -xzf go$(GOLANG_VERSION).linux-amd64.tar.gz
+	# ignore error for testing in GitHub action
+	grep -qxF 'export PATH=$$PATH:/usr/local/go/bin' ~/.zshrc || echo 'export PATH=$$PATH:/usr/local/go/bin' >> ~/.zshrc || true
+	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
+
+full: terraform golang
