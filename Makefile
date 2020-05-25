@@ -13,7 +13,7 @@ terraform:
 golang:
 	wget https://dl.google.com/go/go$(GOLANG_VERSION).linux-amd64.tar.gz
 	sudo tar -C /usr/local -xzf go$(GOLANG_VERSION).linux-amd64.tar.gz
-	sudo grep -qxF 'export PATH=$$PATH:/usr/local/go/bin' ~/.zshrc || echo 'export PATH=$$PATH:/usr/local/go/bin' >> ~/.zshrc
+	grep -qxF 'export PATH=$$PATH:/usr/local/go/bin' ~/.zshrc || sudo echo 'export PATH=$$PATH:/usr/local/go/bin' >> ~/.zshrc
 	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
 
 full: terraform golang
