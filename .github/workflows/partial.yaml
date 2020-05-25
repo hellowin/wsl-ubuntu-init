@@ -1,4 +1,4 @@
-name: Complete Installation
+name: Partial Installation
 on: 
   pull_request:
     types: [opened, edited, closed, reopened, synchronize]
@@ -7,19 +7,26 @@ on:
       - master
 jobs:
   test:
-    name: Test Complete Installation
+    name: Test Partial Installation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Full Installation
+      - name: Test init.sh
         run: |
-          chmod +x full.sh
-          sudo ./full.sh
+          chmod +x init.sh
+          sudo ./init.sh
       
-      - name: Test Installed Apps
+      - name: Verify init.sh
         run: |
           gcc -v
           make -v
+      
+      - name: Test Terraform
+        run: |
+          make terraform
+      
+      - name: Verify Terraform
+        run: |
           terraform -v
