@@ -23,3 +23,4 @@ jobs:
           gcc -v
           make -v
           terraform -v
+          go version
