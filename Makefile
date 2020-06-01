@@ -19,6 +19,8 @@ golang:
 	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
 
 java:
+	sudo add-apt-repository ppa:linuxuprising/java
+	sudo apt-get update
 	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk
 
 maven:
