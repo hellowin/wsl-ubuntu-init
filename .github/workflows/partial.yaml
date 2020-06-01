@@ -43,10 +43,10 @@ jobs:
         run: |
           make java
       
-      - name: Verify Java
-        run: |
-          java -version
-          javac -version
+      # - name: Verify Java
+      #   run: |
+      #     java -version
+      #     javac -version
       
       - name: Test Maven
         run: |
