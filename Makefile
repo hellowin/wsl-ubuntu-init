@@ -19,10 +19,8 @@ golang:
 	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
 
 java:
-	echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-	echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
-	sudo add-apt-repository -y ppa:linuxuprising/java
-	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk
+	# ignore error for Java installation due to license problem in GitHub actions pipeline
+	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk || true
 
 maven:
 	sudo apt-get install -y maven
