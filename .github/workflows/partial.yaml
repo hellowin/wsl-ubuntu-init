@@ -47,3 +47,11 @@ jobs:
         run: |
           java -version
           javac -version
+      
+      - name: Test Maven
+        run: |
+          make maven
+      
+      - name: Verify Maven
+        run: |
+          mvn -version

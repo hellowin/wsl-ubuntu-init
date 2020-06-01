@@ -2,7 +2,7 @@ TERRAFORM_VERSION=0.12.25
 GOLANG_VERSION=1.14.3
 JAVA_VERSION=14
 
-.PHONY: terraform golang java
+.PHONY: terraform golang java maven
 
 terraform:
 	wget https://releases.hashicorp.com/terraform/$(TERRAFORM_VERSION)/terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
@@ -21,4 +21,7 @@ golang:
 java:
 	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk
 
-full: terraform golang java
+maven:
+	sudo apt-get install -y maven
+
+full: terraform golang java maven
