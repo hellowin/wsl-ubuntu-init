@@ -1,7 +1,8 @@
 TERRAFORM_VERSION=0.12.25
 GOLANG_VERSION=1.14.3
+JAVA_VERSION=14
 
-.PHONY: terraform golang
+.PHONY: terraform golang java
 
 terraform:
 	wget https://releases.hashicorp.com/terraform/$(TERRAFORM_VERSION)/terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
@@ -17,4 +18,7 @@ golang:
 	grep -qxF 'export PATH=$$PATH:/usr/local/go/bin' ~/.zshrc || echo 'export PATH=$$PATH:/usr/local/go/bin' >> ~/.zshrc || true
 	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
 
-full: terraform golang
+java:
+	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk
+
+full: terraform golang java
