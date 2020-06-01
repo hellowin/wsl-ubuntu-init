@@ -19,8 +19,9 @@ golang:
 	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
 
 java:
+	echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+	echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 	sudo add-apt-repository -y ppa:linuxuprising/java
-	sudo apt-get update
 	sudo apt-get install -y openjdk-$(JAVA_VERSION)-jdk
 
 maven:
