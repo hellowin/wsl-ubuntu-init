@@ -38,3 +38,20 @@ jobs:
       - name: Verify GoLang
         run: |
           go version
+      
+      - name: Test Java
+        run: |
+          make java
+      
+      # - name: Verify Java
+      #   run: |
+      #     java -version
+      #     javac -version
+      
+      - name: Test Maven
+        run: |
+          make maven
+      
+      - name: Verify Maven
+        run: |
+          mvn -version

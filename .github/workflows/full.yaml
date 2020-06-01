@@ -24,3 +24,6 @@ jobs:
           make -v
           terraform -v
           go version
+          # java -version
+          # javac -version
+          mvn -version
