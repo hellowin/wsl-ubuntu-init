@@ -55,3 +55,11 @@ jobs:
       - name: Verify Maven
         run: |
           mvn -version
+      
+      - name: Test NVM
+        run: |
+          make nvm
+      
+      - name: Verify NVM
+        run: |
+          nvm --version

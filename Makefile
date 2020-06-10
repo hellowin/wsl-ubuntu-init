@@ -2,7 +2,7 @@ TERRAFORM_VERSION=0.12.25
 GOLANG_VERSION=1.14.3
 JAVA_VERSION=14
 
-.PHONY: terraform golang java maven
+.PHONY: terraform golang java maven nvm
 
 terraform:
 	wget https://releases.hashicorp.com/terraform/$(TERRAFORM_VERSION)/terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
@@ -25,4 +25,10 @@ java:
 maven:
 	sudo apt-get install -y maven
 
-full: terraform golang java maven
+nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+	grep -qxF 'export NVM_DIR="$$HOME/.nvm"' ~/.zshrc || echo 'export NVM_DIR="$$HOME/.nvm"' >> ~/.zshrc || true
+	grep -qxF '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' ~/.zshrc || echo '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc || true
+	grep -qxF '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' ~/.zshrc || echo '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc || true
+
+full: terraform golang java maven nvm
