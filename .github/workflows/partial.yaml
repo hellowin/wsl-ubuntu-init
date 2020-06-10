@@ -60,6 +60,6 @@ jobs:
         run: |
           make nvm
       
-      - name: Verify NVM
-        run: |
-          nvm --version
+      # - name: Verify NVM
+      #   run: |
+      #     nvm --version
