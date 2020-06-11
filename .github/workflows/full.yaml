@@ -27,3 +27,4 @@ jobs:
           # java -version
           # javac -version
           mvn -version
+          # nvm --version
