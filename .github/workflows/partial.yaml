@@ -37,7 +37,7 @@ jobs:
 
       - name: Verify GVM
         run: |
-          ~/.gvm/bin/gvm version
+          GVM_ROOT=$HOME/.gvm ~/.gvm/bin/gvm version
       
       - name: Test Java
         run: |
