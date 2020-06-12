@@ -11,12 +11,11 @@ terraform:
 	sudo mv terraform /usr/local/bin
 	rm terraform_$(TERRAFORM_VERSION)_linux_amd64.zip
 
-golang:
-	wget https://dl.google.com/go/go$(GOLANG_VERSION).linux-amd64.tar.gz
-	sudo tar -C /usr/local -xzf go$(GOLANG_VERSION).linux-amd64.tar.gz
-	# ignore error for testing in GitHub action
-	grep -qxF 'export PATH=$$PATH:/usr/local/go/bin' ~/.zshrc || echo 'export PATH=$$PATH:/usr/local/go/bin' >> ~/.zshrc || true
-	rm go$(GOLANG_VERSION).linux-amd64.tar.gz
+gvm:
+	rm -rf ~/.gvm
+	curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash
+	grep -qxF '[[ -s "$$HOME.gvm/scripts/gvm" ]] && source "$$HOME/.gvm/scripts/gvm"' ~/.zshrc || echo '[[ -s "$$HOME.gvm/scripts/gvm" ]] && source "$$HOME/.gvm/scripts/gvm"' >> ~/.zshrc || true
+	sudo apt-get install -y bison
 
 java:
 	# ignore error for Java installation due to license problem in GitHub actions pipeline
@@ -31,4 +30,4 @@ nvm:
 	grep -qxF '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' ~/.zshrc || echo '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc || true
 	grep -qxF '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' ~/.zshrc || echo '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc || true
 
-full: terraform golang java maven nvm
+full: terraform gvm java maven nvm gvm

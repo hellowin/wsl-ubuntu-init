@@ -28,3 +28,4 @@ jobs:
           # javac -version
           mvn -version
           # nvm --version
+          GVM_ROOT=$HOME/.gvm ~/.gvm/bin/gvm version

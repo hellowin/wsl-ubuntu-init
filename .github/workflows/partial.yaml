@@ -30,14 +30,14 @@ jobs:
       - name: Verify Terraform
         run: |
           terraform -v
-      
-      - name: Test GoLang
+
+      - name: Test GVM
         run: |
-          make golang
-      
-      - name: Verify GoLang
+          make gvm
+
+      - name: Verify GVM
         run: |
-          go version
+          GVM_ROOT=$HOME/.gvm ~/.gvm/bin/gvm version
       
       - name: Test Java
         run: |
@@ -63,3 +63,4 @@ jobs:
       # - name: Verify NVM
       #   run: |
       #     nvm --version
+      
