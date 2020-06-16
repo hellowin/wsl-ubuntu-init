@@ -30,4 +30,7 @@ nvm:
 	grep -qxF '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' ~/.zshrc || echo '[ -s "$$NVM_DIR/nvm.sh" ] && \. "$$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc || true
 	grep -qxF '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' ~/.zshrc || echo '[ -s "$$NVM_DIR/bash_completion" ] && \. "$$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.zshrc || true
 
-full: terraform gvm java maven nvm gvm
+hasura:
+	curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
+
+full: terraform gvm java maven nvm gvm hasura

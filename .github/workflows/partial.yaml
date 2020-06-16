@@ -13,54 +13,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Test init.sh
+      - name: init.sh
         run: |
           chmod +x init.sh
           sudo ./init.sh
-      
-      - name: Verify init.sh
-        run: |
           gcc -v
           make -v
       
-      - name: Test Terraform
+      - name: Terraform
         run: |
           make terraform
-      
-      - name: Verify Terraform
-        run: |
           terraform -v
-
-      - name: Test GVM
+      
+      - name: GVM
         run: |
           make gvm
-
-      - name: Verify GVM
-        run: |
           GVM_ROOT=$HOME/.gvm ~/.gvm/bin/gvm version
       
-      - name: Test Java
+      - name: Java
         run: |
           make java
+          # java -version
+          # javac -version
       
-      # - name: Verify Java
-      #   run: |
-      #     java -version
-      #     javac -version
-      
-      - name: Test Maven
+      - name: Maven
         run: |
           make maven
-      
-      - name: Verify Maven
-        run: |
           mvn -version
       
-      - name: Test NVM
+      - name: NVM
         run: |
           make nvm
+          nvm --version
       
-      # - name: Verify NVM
-      #   run: |
-      #     nvm --version
-      
+      - name: Hasura
+        run: |
+          make hasura
+          harusa version
