@@ -44,7 +44,7 @@ jobs:
       - name: NVM
         run: |
           make nvm
-          nvm --version
+          # nvm --version
       
       - name: Hasura
         run: |
