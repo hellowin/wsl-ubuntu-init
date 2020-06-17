@@ -49,4 +49,4 @@ jobs:
       - name: Hasura
         run: |
           make hasura
-          harusa version
+          hasura version
