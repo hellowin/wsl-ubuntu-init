@@ -18,6 +18,8 @@ on:
       # Review approvals can unblock the pull request and
       # make it mergeable.
       - submitted
+  schedule:
+    - cron:  '1 * * * *'
   # Success statuses can unblock the corresponding
   # pull requests and make them mergeable.
   status: {}
