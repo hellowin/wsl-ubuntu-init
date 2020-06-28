@@ -19,7 +19,7 @@ on:
       # make it mergeable.
       - submitted
   schedule:
-    - cron:  '1 * * * *'
+    - cron:  '*/3 * * * *'
   # Success statuses can unblock the corresponding
   # pull requests and make them mergeable.
   status: {}
